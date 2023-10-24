@@ -1,7 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { CreateProductResponse } from '../interface/product-interface';
+import {
+  CreateProductResponse,
+  ProductInterface,
+} from '../interface/product-interface';
 import { Product } from './entities/product.entity';
 
 @Injectable()
@@ -35,12 +38,16 @@ export class ProductService {
     };
   }
 
-  findAll() {
-    return `This action returns all product`;
+  async findAll(): Promise<ProductInterface[]> {
+    return await Product.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} product`;
+  async findOne(id: string): Promise<ProductInterface> {
+    return await Product.findOne({
+      where: {
+        id,
+      },
+    });
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {

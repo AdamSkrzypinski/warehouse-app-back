@@ -10,7 +10,10 @@ import {
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
-import { CreateProductResponse } from '../interface/product-interface';
+import {
+  CreateProductResponse,
+  ProductInterface,
+} from '../interface/product-interface';
 
 @Controller('product')
 export class ProductController {
@@ -24,13 +27,13 @@ export class ProductController {
   }
 
   @Get('/')
-  findAll() {
+  findAll(): Promise<ProductInterface[]> {
     return this.productService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.productService.findOne(+id);
+  findOne(@Param('id') id: string): Promise<ProductInterface> {
+    return this.productService.findOne(id);
   }
 
   @Patch(':id')

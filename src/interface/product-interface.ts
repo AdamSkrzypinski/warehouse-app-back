@@ -3,7 +3,7 @@ export interface ProductInterface {
   name: string;
   count: number;
   measure: string;
-  createdAt: string;
+  createdAt: Date;
 }
 
 export interface CreateProductResponse {
