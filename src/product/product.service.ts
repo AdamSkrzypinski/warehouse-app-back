@@ -3,7 +3,9 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import {
   CreateProductResponse,
+  DeleteProductResponse,
   ProductInterface,
+  UpdateProductResponse,
 } from '../interface/product-interface';
 import { Product } from './entities/product.entity';
 
@@ -50,11 +52,49 @@ export class ProductService {
     });
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return `This action updates a #${id} product`;
+  async update(
+    updateProductReq: UpdateProductDto,
+  ): Promise<UpdateProductResponse> {
+    const { id, measure, count, name } = updateProductReq;
+    const itemToUpdate = await Product.findOne({
+      where: {
+        id,
+      },
+    });
+    if (
+      !itemToUpdate ||
+      name === '' ||
+      name.length < 3 ||
+      typeof name !== 'string' ||
+      measure === '' ||
+      typeof measure !== 'string' ||
+      typeof count !== 'number' ||
+      count < 0
+    ) {
+      return {
+        isSuccess: false,
+      };
+    }
+    itemToUpdate.name = updateProductReq.name;
+    itemToUpdate.count = updateProductReq.count;
+    itemToUpdate.measure = updateProductReq.measure;
+    await itemToUpdate.save();
+    return {
+      id: itemToUpdate.id,
+      isSuccess: true,
+    };
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} product`;
+  async remove(id: string): Promise<DeleteProductResponse> {
+    const itemToDelete = await Product.findOne({
+      where: {
+        id,
+      },
+    });
+    if (!itemToDelete) {
+      return { isSuccess: false };
+    }
+    await Product.remove(itemToDelete);
+    return { isSuccess: true };
   }
 }

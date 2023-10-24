@@ -12,7 +12,9 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import {
   CreateProductResponse,
+  DeleteProductResponse,
   ProductInterface,
+  UpdateProductResponse,
 } from '../interface/product-interface';
 
 @Controller('product')
@@ -36,13 +38,15 @@ export class ProductController {
     return this.productService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productService.update(+id, updateProductDto);
+  @Patch('/')
+  update(
+    @Body() updateProductReq: UpdateProductDto,
+  ): Promise<UpdateProductResponse> {
+    return this.productService.update(updateProductReq);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productService.remove(+id);
+  remove(@Param('id') id: string): Promise<DeleteProductResponse> {
+    return this.productService.remove(id);
   }
 }
