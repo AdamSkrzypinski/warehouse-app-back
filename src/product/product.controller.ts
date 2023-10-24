@@ -10,14 +10,17 @@ import {
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { CreateProductResponse } from '../interface/product-interface';
 
 @Controller('product')
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
   @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productService.create(createProductDto);
+  create(
+    @Body() newProductReq: CreateProductDto,
+  ): Promise<CreateProductResponse> {
+    return this.productService.create(newProductReq);
   }
 
   @Get('/')
