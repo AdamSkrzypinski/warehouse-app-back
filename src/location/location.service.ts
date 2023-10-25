@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { CreateLocationDto } from './dto/create-location.dto';
 import { UpdateLocationDto } from './dto/update-location.dto';
+import { CreateLocationResponse } from '../interface/location-interface';
 
 @Injectable()
 export class LocationService {
-  create(createLocationDto: CreateLocationDto) {
-    return 'This action adds a new location';
-  }
+  // async create(
+  //   createLocationReq: CreateLocationDto,
+  // ): Promise<CreateLocationResponse> {}
 
   findAll() {
     return `This action returns all location`;

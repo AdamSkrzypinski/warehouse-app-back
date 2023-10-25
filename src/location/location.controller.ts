@@ -10,15 +10,18 @@ import {
 import { LocationService } from './location.service';
 import { CreateLocationDto } from './dto/create-location.dto';
 import { UpdateLocationDto } from './dto/update-location.dto';
+import { CreateLocationResponse } from '../interface/location-interface';
 
 @Controller('location')
 export class LocationController {
   constructor(private readonly locationService: LocationService) {}
 
-  @Post()
-  create(@Body() createLocationDto: CreateLocationDto) {
-    return this.locationService.create(createLocationDto);
-  }
+  // @Post('/')
+  // create(
+  //   @Body() createLocationReq: CreateLocationDto,
+  // ): Promise<CreateLocationResponse> {
+  //   // return this.locationService.create(createLocationReq);
+  // }
 
   @Get()
   findAll() {

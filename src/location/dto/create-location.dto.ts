@@ -1,1 +1,5 @@
-export class CreateLocationDto {}
+export class CreateLocationDto {
+  storage: string;
+  area: string;
+  place: string;
+}

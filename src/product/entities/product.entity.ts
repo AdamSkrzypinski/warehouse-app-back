@@ -1,4 +1,13 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+} from 'typeorm';
+import { PlaceEntity } from '../../location/entities/place.entity';
+import { AreaEntity } from '../../location/entities/area.entity';
 
 @Entity()
 export class Product extends BaseEntity {
@@ -24,4 +33,12 @@ export class Product extends BaseEntity {
     default: () => 'CURRENT_TIMESTAMP',
   })
   createdAt: Date;
+
+  @ManyToOne((type) => AreaEntity, (entity) => entity.products)
+  @JoinColumn()
+  productArea: AreaEntity;
+
+  @ManyToOne((type) => PlaceEntity, (entity) => entity.products)
+  @JoinColumn()
+  productPlace: AreaEntity;
 }

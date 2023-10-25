@@ -6,7 +6,8 @@ import { config } from './config/config';
 import { ProductModule } from './product/product.module';
 import { Product } from './product/entities/product.entity';
 import { LocationModule } from './location/location.module';
-import { Location } from './location/entities/location.entity';
+import { AreaEntity } from './location/entities/area.entity';
+import { PlaceEntity } from './location/entities/place.entity';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { Location } from './location/entities/location.entity';
       username: config.dbUser,
       password: config.dbPassword,
       database: 'warehouse-db',
-      entities: [Product, Location],
+      entities: [Product, AreaEntity, PlaceEntity],
       bigNumberStrings: false,
       logging: true,
       synchronize: true,
