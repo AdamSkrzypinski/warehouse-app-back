@@ -13,7 +13,7 @@ export class AreaEntity extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ length: 50 })
   name: string;
 
   @OneToMany((type) => Product, (entity) => entity.productArea)

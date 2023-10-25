@@ -1,5 +1,8 @@
-export class CreateLocationDto {
-  storage: string;
-  area: string;
-  place: string;
+export class CreateAreaDto {
+  name: string;
+}
+
+export class CreatePlaceDto {
+  name: string;
+  areaId: string;
 }

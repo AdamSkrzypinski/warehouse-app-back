@@ -1,11 +1,10 @@
-import { CreateLocationDto } from '../location/dto/create-location.dto';
-
-export interface LocationInterface {
-  id: string;
-  locationValues: CreateLocationDto;
-}
-
-export interface CreateLocationResponse {
+export interface CreateAreaResponse {
   id?: string;
   isSuccess: boolean;
 }
+
+export type CreatePlaceResponse = CreateAreaResponse;
+
+export type UpdateAreaResponse = CreateAreaResponse;
+
+export type UpdatePlaceResponse = CreateAreaResponse;
