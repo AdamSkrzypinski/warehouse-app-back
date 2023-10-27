@@ -85,10 +85,14 @@ export class LocationService {
     updateAreaReq: UpdateAreaDto,
   ): Promise<UpdateAreaResponse> {
     const { name } = updateAreaReq;
-    const areaToUpdate = await AreaEntity.findOne({ where: { id } });
+    const areaToUpdate = await AreaEntity.findOne({
+      where: { id },
+      relations: { places: true },
+    });
     if (!areaToUpdate || !name || name === '') {
       return { isSuccess: false };
     }
+    console.log(areaToUpdate);
     await AreaEntity.update(
       {
         id,
