@@ -4,6 +4,8 @@ import { UpdateAreaDto, UpdatePlaceDto } from './dto/update-location.dto';
 import {
   CreateAreaResponse,
   CreatePlaceResponse,
+  DeleteAreaResponse,
+  DeletePlaceResponse,
   UpdateAreaResponse,
   UpdatePlaceResponse,
 } from '../interface/location-interface';
@@ -71,12 +73,19 @@ export class LocationService {
   async findOneArea(id: string) {
     return await AreaEntity.findOneOrFail({
       where: { id },
+      relations: {
+        places: true,
+      },
     });
   }
 
   async findOnePlace(id: string) {
     return await PlaceEntity.findOneOrFail({
       where: { id },
+      relations: {
+        products: true,
+        placeArea: true,
+      },
     });
   }
 
@@ -92,7 +101,6 @@ export class LocationService {
     if (!areaToUpdate || !name || name === '') {
       return { isSuccess: false };
     }
-    console.log(areaToUpdate);
     await AreaEntity.update(
       {
         id,
@@ -109,7 +117,7 @@ export class LocationService {
     updatePlaceReq: UpdatePlaceDto,
   ): Promise<UpdatePlaceResponse> {
     const { name, areaId } = updatePlaceReq;
-    const area = await AreaEntity.findOne({
+    const area = await PlaceEntity.findOne({
       where: { id: areaId },
     });
     const placeToUpdate = await PlaceEntity.findOne({ where: { id } });
@@ -128,7 +136,29 @@ export class LocationService {
     return { id, isSuccess: true };
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} location`;
+  async removeArea(id: string): Promise<DeleteAreaResponse> {
+    const areaToDelete = await AreaEntity.findOne({
+      where: {
+        id,
+      },
+    });
+    if (!areaToDelete) {
+      return { isSuccess: false };
+    }
+    await AreaEntity.remove(areaToDelete);
+    return { isSuccess: true };
+  }
+
+  async removePlace(id: string): Promise<DeletePlaceResponse> {
+    const placeToDelete = await PlaceEntity.findOne({
+      where: {
+        id,
+      },
+    });
+    if (!placeToDelete) {
+      return { isSuccess: false };
+    }
+    await PlaceEntity.remove(placeToDelete);
+    return { isSuccess: true };
   }
 }

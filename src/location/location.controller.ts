@@ -13,6 +13,8 @@ import { UpdateAreaDto, UpdatePlaceDto } from './dto/update-location.dto';
 import {
   CreateAreaResponse,
   CreatePlaceResponse,
+  DeleteAreaResponse,
+  DeletePlaceResponse,
   UpdateAreaResponse,
   UpdatePlaceResponse,
 } from '../interface/location-interface';
@@ -72,7 +74,12 @@ export class LocationController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.locationService.remove(+id);
+  removeArea(@Param('id') id: string): Promise<DeleteAreaResponse> {
+    return this.locationService.removeArea(id);
+  }
+
+  @Delete(':id')
+  removePlace(@Param('id') id: string): Promise<DeletePlaceResponse> {
+    return this.locationService.removePlace(id);
   }
 }

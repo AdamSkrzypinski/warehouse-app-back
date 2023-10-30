@@ -49,6 +49,10 @@ export class ProductService {
       where: {
         id,
       },
+      relations: {
+        productArea: true,
+        productPlace: true,
+      },
     });
   }
 
