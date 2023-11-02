@@ -14,15 +14,19 @@ export class ProductService {
   async create(
     newProductReq: CreateProductDto,
   ): Promise<CreateProductResponse> {
+    console.log(newProductReq);
     const { name, measure, count } = newProductReq;
     if (
       name === '' ||
       name.length < 3 ||
+      name.length > 70 ||
       typeof name !== 'string' ||
       measure === '' ||
       typeof measure !== 'string' ||
-      typeof count !== 'number' ||
-      count < 0
+      measure.length < 2 ||
+      measure.length > 15 ||
+      count < 0 ||
+      count > 9999999
     ) {
       return {
         isSuccess: false,
