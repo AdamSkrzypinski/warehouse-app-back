@@ -38,7 +38,7 @@ export class ProductController {
     return this.productService.findOne(id);
   }
 
-  @Patch('/')
+  @Patch()
   update(
     @Body() updateProductReq: UpdateProductDto,
   ): Promise<UpdateProductResponse> {

@@ -3,6 +3,6 @@ export class UpdateProductDto {
   name: string;
   count: number;
   measure: string;
-  productArena: string;
-  produktPlace: string;
+  productAreaId: string;
+  productPlaceId: string;
 }

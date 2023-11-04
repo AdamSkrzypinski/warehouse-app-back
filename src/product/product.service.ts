@@ -16,7 +16,6 @@ export class ProductService {
   async create(
     newProductReq: CreateProductDto,
   ): Promise<CreateProductResponse> {
-    console.log(newProductReq);
     const { name, measure, count } = newProductReq;
     if (
       name === '' ||
@@ -65,7 +64,8 @@ export class ProductService {
   async update(
     updateProductReq: UpdateProductDto,
   ): Promise<UpdateProductResponse> {
-    const { id, measure, count, name, productArena, produktPlace } =
+    console.log(updateProductReq);
+    const { id, measure, count, name, productAreaId, productPlaceId } =
       updateProductReq;
     const itemToUpdate = await Product.findOne({
       where: {
@@ -76,6 +76,19 @@ export class ProductService {
         productPlace: true,
       },
     });
+    console.log(
+      itemToUpdate,
+      !itemToUpdate,
+      name,
+      name.length,
+      typeof name,
+      measure,
+      typeof measure,
+      count,
+      !productAreaId,
+      !productPlaceId,
+      productAreaId,
+    );
     if (
       !itemToUpdate ||
       name === '' ||
@@ -84,8 +97,8 @@ export class ProductService {
       measure === '' ||
       typeof measure !== 'string' ||
       count < 0 ||
-      !productArena ||
-      !produktPlace
+      !productAreaId ||
+      !productPlaceId
     ) {
       return {
         isSuccess: false,
@@ -96,12 +109,12 @@ export class ProductService {
     itemToUpdate.measure = measure;
     itemToUpdate.productPlace = await PlaceEntity.findOne({
       where: {
-        id: produktPlace,
+        id: productPlaceId,
       },
     });
     itemToUpdate.productArea = await AreaEntity.findOne({
       where: {
-        id: productArena,
+        id: productAreaId,
       },
     });
     await itemToUpdate.save();
