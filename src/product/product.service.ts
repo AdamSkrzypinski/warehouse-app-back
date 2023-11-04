@@ -63,10 +63,15 @@ export class ProductService {
   async update(
     updateProductReq: UpdateProductDto,
   ): Promise<UpdateProductResponse> {
-    const { id, measure, count, name } = updateProductReq;
+    const { id, measure, count, name, productArena, produktPlace } =
+      updateProductReq;
     const itemToUpdate = await Product.findOne({
       where: {
         id,
+      },
+      relations: {
+        productArea: true,
+        productPlace: true,
       },
     });
     if (
@@ -76,8 +81,9 @@ export class ProductService {
       typeof name !== 'string' ||
       measure === '' ||
       typeof measure !== 'string' ||
-      typeof count !== 'number' ||
-      count < 0
+      count < 0 ||
+      !productArena ||
+      !produktPlace
     ) {
       return {
         isSuccess: false,
