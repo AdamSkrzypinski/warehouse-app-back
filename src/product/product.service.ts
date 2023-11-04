@@ -8,6 +8,8 @@ import {
   UpdateProductResponse,
 } from '../interface/product-interface';
 import { Product } from './entities/product.entity';
+import { PlaceEntity } from '../location/entities/place.entity';
+import { AreaEntity } from '../location/entities/area.entity';
 
 @Injectable()
 export class ProductService {
@@ -89,9 +91,19 @@ export class ProductService {
         isSuccess: false,
       };
     }
-    itemToUpdate.name = updateProductReq.name;
-    itemToUpdate.count = updateProductReq.count;
-    itemToUpdate.measure = updateProductReq.measure;
+    itemToUpdate.name = name;
+    itemToUpdate.count = count;
+    itemToUpdate.measure = measure;
+    itemToUpdate.productPlace = await PlaceEntity.findOne({
+      where: {
+        id: produktPlace,
+      },
+    });
+    itemToUpdate.productArea = await AreaEntity.findOne({
+      where: {
+        id: productArena,
+      },
+    });
     await itemToUpdate.save();
     return {
       id: itemToUpdate.id,

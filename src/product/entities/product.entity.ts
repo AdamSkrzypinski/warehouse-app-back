@@ -40,5 +40,5 @@ export class Product extends BaseEntity {
 
   @ManyToOne((type) => PlaceEntity, (entity) => entity.products)
   @JoinColumn()
-  productPlace: AreaEntity;
+  productPlace: PlaceEntity;
 }
