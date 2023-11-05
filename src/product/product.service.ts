@@ -76,19 +76,7 @@ export class ProductService {
         productPlace: true,
       },
     });
-    console.log(
-      itemToUpdate,
-      !itemToUpdate,
-      name,
-      name.length,
-      typeof name,
-      measure,
-      typeof measure,
-      count,
-      !productAreaId,
-      !productPlaceId,
-      productAreaId,
-    );
+
     if (
       !itemToUpdate ||
       name === '' ||
