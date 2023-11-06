@@ -10,6 +10,7 @@ import {
 import { Product } from './entities/product.entity';
 import { PlaceEntity } from '../location/entities/place.entity';
 import { AreaEntity } from '../location/entities/area.entity';
+import { ILike, Like } from 'typeorm';
 
 @Injectable()
 export class ProductService {
@@ -47,6 +48,14 @@ export class ProductService {
 
   async findAll(): Promise<ProductInterface[]> {
     return await Product.find();
+  }
+
+  async findByName(value: string): Promise<ProductInterface[]> {
+    return await Product.find({
+      where: {
+        name: Like(`%${value}%`),
+      },
+    });
   }
 
   async findOne(id: string): Promise<ProductInterface> {

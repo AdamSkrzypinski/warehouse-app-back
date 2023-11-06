@@ -33,7 +33,12 @@ export class ProductController {
     return this.productService.findAll();
   }
 
-  @Get(':id')
+  @Get('/search/:value')
+  findByName(@Param('value') value: string): Promise<ProductInterface[]> {
+    return this.productService.findByName(value);
+  }
+
+  @Get('/:id')
   findOne(@Param('id') id: string): Promise<ProductInterface> {
     return this.productService.findOne(id);
   }
