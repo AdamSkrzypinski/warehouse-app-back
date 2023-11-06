@@ -18,7 +18,7 @@ export class LocationService {
     if (
       !createAreaReq.name ||
       createAreaReq.name === '' ||
-      typeof createAreaReq.name === 'string'
+      typeof createAreaReq.name !== 'string'
     ) {
       return { isSuccess: false };
     }
@@ -35,11 +35,12 @@ export class LocationService {
   async createPlace(
     createPlaceReq: CreatePlaceDto,
   ): Promise<CreatePlaceResponse> {
+    console.log(createPlaceReq);
     const { name, areaId } = createPlaceReq;
     if (
       !name ||
       name === '' ||
-      typeof name === 'string' ||
+      typeof name !== 'string' ||
       !areaId ||
       areaId === ''
     ) {
