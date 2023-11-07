@@ -17,7 +17,7 @@ import { PlaceEntity } from './location/entities/place.entity';
       port: 3306,
       username: config.dbUser,
       password: config.dbPassword,
-      database: 'warehouse-db',
+      database: config.dbDatabase,
       entities: [Product, AreaEntity, PlaceEntity],
       bigNumberStrings: false,
       logging: true,
