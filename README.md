@@ -85,7 +85,8 @@ A simple warehouse management application. Under construction, details in Roadma
    $ npm run start:dev
 
    # production mode
-   $ npm run start:prod   ```
+   $ npm run start:prod 
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
