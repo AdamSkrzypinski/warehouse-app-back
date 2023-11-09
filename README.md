@@ -1,73 +1,144 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Warehouse-App
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### (Backend Repository)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<!-- ABOUT THE PROJECT -->
 
-## Description
+## About The Project
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[![Product Name Screen Shot][product-screenshot]](https://nuidzruvvg.cfolks.pl/)
 
-## Installation
+A simple warehouse management application. Under construction, details in Roadmap.
 
-```bash
-$ npm install
-```
+## Demo
 
-## Running the app
+[Warehouse-App]
 
-```bash
-# development
-$ npm run start
+## Roadmap
 
-# watch mode
-$ npm run start:dev
+- [x] Add/delete/edit/move product
+- [x] Add location
+- [x] Search product
+- [ ] User login/ registration module
+- [ ] Stocktaking module
+- [ ] History module
 
-# production mode
-$ npm run start:prod
-```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Test
+### Built With
 
-```bash
-# unit tests
-$ npm run test
+* [![Nodejs][Nodejs]][Nodejs-url]
+* [![Typescript][Typescript]][Typescript-url]
+* [![Mysql][Mysql]][Mysql-url]
+* [![ Nestjs][Nestjs]][Nestjs-url]
 
-# e2e tests
-$ npm run test:e2e
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# test coverage
-$ npm run test:cov
-```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+<!-- GETTING STARTED -->
 
-## Stay in touch
+## Getting Started
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+1. Clone the repo
+   ```sh
+   git clone https://github.com/AdamSkrzypinski/warehouse-app-front.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
 
-## License
+3. Create and configure the database.
 
-Nest is [MIT licensed](LICENSE).
+4. Go to the directory:
+   ```
+   /src/config/
+   ```   
+
+   rename the file:
+   ```
+   config.example.ts
+   ```
+   to:
+   ```
+   config.ts
+   ```
+
+5. Complete the file 'config.ts' with your own configuration data.
+   ```
+   export const config = {
+   dbHost: 'localhost',
+   dbUser: 'user',
+   dbPassword: 'password',
+   dbDatabase: 'database',
+   corsOrigin: 'http://localhost:3000',
+   };```
+
+
+6. Run
+   ```sh
+   # development
+   $ npm run start
+
+   # watch mode
+   $ npm run start:dev
+
+   # production mode
+   $ npm run start:prod   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Frontend Repository Link
+
+https://github.com/AdamSkrzypinski/warehouse-app-front
+
+
+
+
+
+
+
+<!-- CONTACT -->
+
+## Contact
+
+adamskrzy@gmail.com
+
+Project
+Link: [https://github.com/AdamSkrzypinski/warehouse-app-front](https://github.com/AdamSkrzypinski/warehouse-app-front)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+
+[product-screenshot]: ezgif-3-d4a511a790.gif
+
+[Warehouse-App]:
+https://nuidzruvvg.cfolks.pl/
+
+[Typescript]:    https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+
+[Typescript-url]: https://www.typescriptlang.org/
+
+[Mysql]:    https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white
+
+[Mysql-url]: https://www.mysql.com/
+
+[Nestjs]:    https://img.shields.io/badge/-NestJs-ea2845?style=flat-square&logo=nestjs&logoColor=white
+
+[Nestjs-url]: https://nestjs.com/
+
+
+[Nodejs]:    https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
+
+[Nodejs-url]: https://nodejs.oodejs
+
