@@ -8,6 +8,7 @@ import { Product } from './product/entities/product.entity';
 import { LocationModule } from './location/location.module';
 import { AreaEntity } from './location/entities/area.entity';
 import { PlaceEntity } from './location/entities/place.entity';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { PlaceEntity } from './location/entities/place.entity';
     }),
     ProductModule,
     LocationModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
