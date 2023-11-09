@@ -64,7 +64,9 @@ export class LocationService {
   }
 
   async findAllAreas() {
-    return await AreaEntity.find();
+    return await AreaEntity.find({
+      order: { name: 'ASC' },
+    });
   }
 
   async findAllPlaces() {
@@ -76,6 +78,11 @@ export class LocationService {
       where: { id },
       relations: {
         places: true,
+      },
+      order: {
+        places: {
+          name: 'ASC',
+        },
       },
     });
   }
