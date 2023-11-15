@@ -19,6 +19,9 @@ export class ProductService {
   ): Promise<CreateProductResponse> {
     const { name, measure, count } = newProductReq;
     if (
+      !name ||
+      !count ||
+      !measure ||
       name === '' ||
       name.length < 3 ||
       name.length > 70 ||

@@ -9,6 +9,8 @@ import { LocationModule } from './location/location.module';
 import { AreaEntity } from './location/entities/area.entity';
 import { PlaceEntity } from './location/entities/place.entity';
 import { UserModule } from './user/user.module';
+import { User } from './user/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -19,7 +21,7 @@ import { UserModule } from './user/user.module';
       username: config.dbUser,
       password: config.dbPassword,
       database: config.dbDatabase,
-      entities: [Product, AreaEntity, PlaceEntity],
+      entities: [Product, AreaEntity, PlaceEntity, User],
       bigNumberStrings: false,
       logging: true,
       synchronize: true,
@@ -27,6 +29,7 @@ import { UserModule } from './user/user.module';
     ProductModule,
     LocationModule,
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
