@@ -65,4 +65,19 @@ export class AuthService {
       return res.json({ error: e.message });
     }
   }
+
+  async logout(user: User, res: Response) {
+    try {
+      user.currentTokenId = null;
+      await user.save();
+      res.clearCookie('warehouseJwt', {
+        secure: false,
+        domain: 'localhost',
+        httpOnly: true,
+      });
+      return res.json({ ok: true });
+    } catch (e) {
+      return res.json({ error: e.message });
+    }
+  }
 }

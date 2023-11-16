@@ -18,6 +18,8 @@ import {
   UpdateProductResponse,
 } from '../interface/product-interface';
 import { AuthGuard } from '@nestjs/passport';
+import { UserObj } from '../decorators/user-obj.decorator';
+import { User } from '../user/entities/user.entity';
 
 @Controller('product')
 export class ProductController {
@@ -27,7 +29,9 @@ export class ProductController {
   @Post()
   create(
     @Body() newProductReq: CreateProductDto,
+    @UserObj() user: User,
   ): Promise<CreateProductResponse> {
+    console.log({ user });
     return this.productService.create(newProductReq);
   }
 
