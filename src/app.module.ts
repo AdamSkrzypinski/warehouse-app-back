@@ -19,7 +19,7 @@ import { AuthModule } from './auth/auth.module';
       host: config.dbHost,
       port: 3306,
       username: config.dbUser,
-      password: config.dbPassword,
+      // password: config.dbPassword,
       database: config.dbDatabase,
       entities: [Product, AreaEntity, PlaceEntity, User],
       bigNumberStrings: false,

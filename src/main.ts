@@ -14,8 +14,8 @@ async function bootstrap() {
   app.setGlobalPrefix('warehousev2');
 
   app.use(helmet());
-
   app.use(cookieParser());
+
   app.enableCors({
     origin: config.corsOrigin,
   });

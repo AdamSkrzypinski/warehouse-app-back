@@ -6,6 +6,7 @@ import { hashPwd } from '../utils/hash-pwd';
 import { JwtPayload } from './jwt.strategy';
 import { sign } from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
+import { config } from 'src/config/config';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +16,7 @@ export class AuthService {
   } {
     const payload: JwtPayload = { id: currentTokenId };
     const expiresIn = 60 * 30 * 24;
-    const accessToken = sign(payload, 'dfsagdgfdgdsDSADG!$#@#$!134134', {
+    const accessToken = sign(payload, config.jwtKey, {
       expiresIn,
     });
     return {
@@ -56,8 +57,8 @@ export class AuthService {
 
       return res
         .cookie('warehouseJwt', token.accessToken, {
-          secure: false,
-          domain: 'localhost',
+          secure: config.jwtHttpsSecure,
+          domain: config.jwtCookieDomain,
           httpOnly: true,
         })
         .json({ ok: true });
@@ -71,8 +72,8 @@ export class AuthService {
       user.currentTokenId = null;
       await user.save();
       res.clearCookie('warehouseJwt', {
-        secure: false,
-        domain: 'localhost',
+        secure: config.jwtHttpsSecure,
+        domain: config.jwtCookieDomain,
         httpOnly: true,
       });
       return res.json({ ok: true });
