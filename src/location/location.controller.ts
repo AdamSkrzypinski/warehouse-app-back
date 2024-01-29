@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { LocationService } from './location.service';
 import { CreateAreaDto, CreatePlaceDto } from './dto/create-location.dto';
@@ -18,6 +19,9 @@ import {
   UpdateAreaResponse,
   UpdatePlaceResponse,
 } from '../interface/location-interface';
+import { UserObj } from 'src/decorators/user-obj.decorator';
+import { User } from 'src/user/entities/user.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('location')
 export class LocationController {
@@ -38,7 +42,9 @@ export class LocationController {
   }
 
   @Get('/area')
-  findAllAreas() {
+  @UseGuards(AuthGuard('jwt'))
+  findAllAreas(@UserObj() user: User) {
+    console.log(user);
     return this.locationService.findAllAreas();
   }
 
