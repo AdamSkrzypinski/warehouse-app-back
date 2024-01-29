@@ -34,10 +34,12 @@ export class Product extends BaseEntity {
   })
   createdAt: Date;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @ManyToOne((type) => AreaEntity, (entity) => entity.products)
   @JoinColumn()
   productArea: AreaEntity;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @ManyToOne((type) => PlaceEntity, (entity) => entity.products)
   @JoinColumn()
   productPlace: PlaceEntity;

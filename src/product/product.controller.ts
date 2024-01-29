@@ -20,10 +20,14 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { UserObj } from '../decorators/user-obj.decorator';
 import { User } from '../user/entities/user.entity';
+import { HistoryService } from 'src/history/history.service';
 
 @Controller('product')
 export class ProductController {
-  constructor(private readonly productService: ProductService) {}
+  constructor(
+    private readonly productService: ProductService,
+    private historyService: HistoryService,
+  ) {}
 
   @UseGuards(AuthGuard('jwt'))
   @Post()
@@ -32,6 +36,8 @@ export class ProductController {
     @UserObj() user: User,
   ): Promise<CreateProductResponse> {
     console.log({ user });
+    this.historyService.create({ userLogin: user.login, action: 'coś tam' });
+
     return this.productService.create(newProductReq);
   }
 

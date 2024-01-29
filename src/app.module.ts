@@ -11,6 +11,8 @@ import { PlaceEntity } from './location/entities/place.entity';
 import { UserModule } from './user/user.module';
 import { User } from './user/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { HistoryModule } from './history/history.module';
+import { History } from './history/entities/history.entity';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { AuthModule } from './auth/auth.module';
       username: config.dbUser,
       // password: config.dbPassword,
       database: config.dbDatabase,
-      entities: [Product, AreaEntity, PlaceEntity, User],
+      entities: [Product, AreaEntity, PlaceEntity, User, History],
       bigNumberStrings: false,
       logging: true,
       synchronize: true,
@@ -30,6 +32,7 @@ import { AuthModule } from './auth/auth.module';
     LocationModule,
     UserModule,
     AuthModule,
+    HistoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
