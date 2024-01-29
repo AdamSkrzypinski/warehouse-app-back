@@ -10,7 +10,7 @@ import {
 import { Product } from './entities/product.entity';
 import { PlaceEntity } from '../location/entities/place.entity';
 import { AreaEntity } from '../location/entities/area.entity';
-import { ILike, Like } from 'typeorm';
+import { Like } from 'typeorm';
 
 @Injectable()
 export class ProductService {
